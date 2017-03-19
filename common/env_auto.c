@@ -287,7 +287,7 @@ int saveenv_movinand(void)
 	}
 	env_ptr->crc   = crc32(0, env_ptr->data, ENV_SIZE);
 
-	mmc_init(find_mmc_device(0));
+	mmc_init(find_mmc_device(1));
         movi_write_env(virt_to_phys((ulong)env_ptr));
         puts("done\n");
 
