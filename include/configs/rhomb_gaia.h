@@ -257,21 +257,8 @@
 #if defined(CONFIG_HKDK4412) && defined(CONFIG_EXYNOS_PRIME)
     #define CONFIG_CMD_SETEXPR
 
-    #define CONFIG_BOOTCOMMAND  \
-        "    cfgload;"                          \
-        " mmc rescan 0:1; mmc rescan 0:2; "     \
-        " if run loadbootscript_1; "            \
-        "    then run bootscript; "             \
-        " else "                                \
-        "    if run loadbootscript_2; "         \
-        "        then run bootscript; "         \
-        "    else "                             \
-        "        run default_bootcmd; "         \
-        "    fi ;"                              \
-        " fi ; "
-
-    #define CONFIG_BOOTARGS	"fb_x_res=1280 fb_y_res=720 "       \
-                            "hdmi_phy_res=720 "
+#define CONFIG_BOOTCOMMAND	"ext4load mmc 0:1 0x40008000 zImage;bootm 0x40008000"
+#define CONFIG_BOOTARGS		"console=tty1 console=ttySAC1,115200 mem=1023M root=/dev/mmcblk0p1 rootwait rw"
     #define CONFIG_UBOOT_COPY_SD2EMMC   \
 		"movi r f 0 40000000;emmc open 1;movi w z f 1 40000000;emmc close 1;"	\
 		"movi r b 0 40000000;emmc open 1;movi w z b 1 40000000;emmc close 1;"	\

@@ -58,7 +58,7 @@ sudo dd iflag=dsync oflag=dsync if=./bl2.HardKernel of=$device seek=$bl2_positio
 
 #<u-boot fusing>
 echo "u-boot fusing"
-sudo dd iflag=dsync oflag=dsync if=../u-boot.bin of=$device seek=$uboot_position
+sudo dd iflag=dsync oflag=dsync if=./u-boot.bin of=$device seek=$uboot_position
 
 #<TrustZone S/W fusing>
 echo "TrustZone S/W fusing"
