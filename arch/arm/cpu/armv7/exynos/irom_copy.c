@@ -121,7 +121,7 @@ void emmc_4_4_endbootOp_eMMC(void)
 
 void movi_write_env(ulong addr)
 {
-	movi_write(1, raw_area_control.image[4].start_blk,
+	movi_write(gaia_board_bootdevice, raw_area_control.image[4].start_blk,
 		raw_area_control.image[4].used_blk, addr);
 }
 
@@ -132,7 +132,7 @@ void movi_write_env_card(ulong addr, int card)
 
 void movi_read_env(ulong addr)
 {
-	movi_read(1, raw_area_control.image[4].start_blk,
+	movi_read(gaia_board_bootdevice, raw_area_control.image[4].start_blk,
 		raw_area_control.image[4].used_blk, addr);
 }
 

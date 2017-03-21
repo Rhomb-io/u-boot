@@ -790,6 +790,10 @@ static inline phys_addr_t map_to_sysmem(void *ptr)
 }
 # endif
 
+#ifdef CONFIG_RHOMB_GAIA_BOARD
+extern unsigned int gaia_board_bootdevice;
+#endif
+
 #endif /* __ASSEMBLY__ */
 
 /* Put only stuff here that the assembler can digest */

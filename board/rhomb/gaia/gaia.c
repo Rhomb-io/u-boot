@@ -16,11 +16,15 @@
 #include <asm/arch/movi_partition.h>
 
 unsigned int OmPin;
-
+unsigned int gaia_board_bootdevice;
 DECLARE_GLOBAL_DATA_PTR;
 extern int nr_dram_banks;
 unsigned int second_boot_info = 0xffffffff;
 
+typedef enum {
+	SD_CARD_DEVICE,
+	EMMC_DEVICE
+}_bootmode;
 /* ------------------------------------------------------------------------- */
 #define SMC9115_Tacs	(0x0)	// 0clk		address set-up
 #define SMC9115_Tcos	(0x4)	// 4clk		chip selection set-up
@@ -201,12 +205,14 @@ int board_init(void)
 		printf(" NAND\n");
 	} else if (OmPin == BOOT_MMCSD) {
 		printf(" SDMMC\n");
+		gaia_board_bootdevice = SD_CARD_DEVICE;
 	} else if (OmPin == BOOT_EMMC) {
 		printf(" EMMC4.3\n");
+		gaia_board_bootdevice = EMMC_DEVICE;
 	} else if (OmPin == BOOT_EMMC_4_4) {
 		printf(" EMMC4.41\n");
+		gaia_board_bootdevice = EMMC_DEVICE;
 	}
-
 	/* CLK_SRC_LCD0: Clock source for LCD_BLK
 	 * Select source clock of each device (MIPI0_SEL, MDNIE_PWM0_SEL,
 	 * MDNIE0_SEL, FIMD0_SEL) to SCLKMPLL_USER_T
