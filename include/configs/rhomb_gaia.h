@@ -259,7 +259,8 @@
     #define CONFIG_CMD_SETEXPR
 
 #define CONFIG_BOOTCOMMAND	"ext4load mmc 0:1 0x40008000 zImage;bootm 0x40008000"
-#define CONFIG_BOOTARGS		"console=tty1 console=ttySAC1,115200 mem=1023M root=/dev/mmcblk0p1 rootwait rw"
+#define CONFIG_BOOTARGS		"console=tty1 console=ttySAC1,115200 mem=1023M root=/dev/mmcblk0p1 rootwait rw " \
+				"drm_kms_helper.edid_firmware=edid/1920x1080.bin"
     #define CONFIG_UBOOT_COPY_SD2EMMC   \
 		"movi r f 0 40000000;emmc open 1;movi w z f 1 40000000;emmc close 1;"	\
 		"movi r b 0 40000000;emmc open 1;movi w z b 1 40000000;emmc close 1;"	\
